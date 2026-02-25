@@ -1,20 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Login - BookOrbit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | BookOrbit</title>
 <style>
-body{font-family:Arial;background:#f4f6f9;text-align:center;padding-top:100px;}
-form{background:white;padding:30px;display:inline-block;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-input{display:block;margin:15px auto;padding:10px;width:250px;}
-button{padding:10px 20px;background:#007bff;color:white;border:none;border-radius:5px;}
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+}
+nav {
+    background: #0a192f;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+}
+nav h2 { color: white; margin: 0; }
+nav a { color: white; margin-left: 15px; text-decoration: none; }
+.container {
+    max-width: 400px;
+    margin: 60px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+h2 { text-align: center; margin-bottom: 20px; }
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover { background: #00c6ff; color: #000; }
+.error { color: red; margin-bottom: 15px; }
 </style>
 </head>
 <body>
-<h2>Login to BookOrbit</h2>
-<form>
-<input type="email" placeholder="Enter Email">
-<input type="password" placeholder="Enter Password">
-<button>Login</button>
-</form>
+<nav>
+    <h2>📚 BookOrbit</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="signup.html">Signup</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h2>Login</h2>
+    <div id="error" class="error"></div>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
+    const errorDiv = document.getElementById("error");
+
+    if(user === "" || pass === ""){
+        errorDiv.textContent = "Username and password are required!";
+        return;
+    }
+
+    // Placeholder login validation
+    if(user === "admin" && pass === "admin123"){
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    } else {
+        errorDiv.textContent = "Invalid username or password.";
+    }
+});
+</script>
 </body>
 </html>
