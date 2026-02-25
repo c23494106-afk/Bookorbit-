@@ -15,7 +15,6 @@ body {
 }
 a { text-decoration: none; }
 button { cursor: pointer; }
-
 /* ========== Navbar ========== */
 nav {
     background: #0a192f;
@@ -31,7 +30,6 @@ nav {
 nav h2 { color: white; margin:0; }
 nav .links a { color:white; margin-left:15px; margin-top:5px; font-weight:500; transition:color 0.3s; }
 nav .links a:hover { color:#00c6ff; }
-
 /* ========== Hero Section ========== */
 .hero {
     min-height: 50vh;
@@ -57,7 +55,6 @@ nav .links a:hover { color:#00c6ff; }
     transition: all 0.3s;
 }
 .hero button:hover { transform:scale(1.05); background: linear-gradient(45deg,#e0e0e0,#ffffff); }
-
 /* ========== Features Section ========== */
 .features { padding:60px 20px; text-align:center; background:#f9fafc; }
 .features h2 { margin-bottom:40px; }
@@ -73,7 +70,6 @@ nav .links a:hover { color:#00c6ff; }
     cursor:pointer;
 }
 .card:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
-
 /* ========== Books Section ========== */
 .books-section { padding:60px 20px; text-align:center; }
 .books-section h2 { margin-bottom:40px; }
@@ -102,8 +98,7 @@ nav .links a:hover { color:#00c6ff; }
 .book button:hover { background: linear-gradient(45deg,#00c6ff,#007bff); }
 .book:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
 .book:hover img { transform:scale(1.1); }
-
-/* ========== Login / Signup Section Modal ========== */
+/* ========== Modal (Login/Signup) ========== */
 .modal {
     display:none;
     position:fixed;
@@ -123,34 +118,28 @@ nav .links a:hover { color:#00c6ff; }
     position:relative;
 }
 .close { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; }
-
 /* ========== Contact Section ========== */
 .contact-section { padding:60px 20px; text-align:center; background:#f9fafc; }
 .contact-section h2 { margin-bottom:40px; }
 .contact-section input, .contact-section textarea { width:90%; max-width:400px; padding:10px; margin:5px 0; border-radius:5px; border:1px solid #ccc; }
 .contact-section button { margin-top:10px; padding:10px 20px; border:none; border-radius:5px; background:#007bff; color:white; }
-
 /* ========== Dark Mode ========== */
 .dark { background:#121212; color:white; }
 .dark nav { background:#000; }
 .dark .features, .dark .books-section, .dark .contact-section { background:#181818; }
 .dark .card, .dark .book, .dark .modal-content { background:#1e1e1e; color:white; }
-
 /* ========== Dark Mode Button ========== */
 #darkModeBtn { position:fixed; top:20px; right:20px; padding:8px 15px; border:none; border-radius:5px; cursor:pointer; background:#007bff; color:white; }
 #darkModeBtn:hover { background:#00c6ff; color:#000; }
-
 /* ========== Responsive ========== */
 @media (max-width:900px){ .books-container,.cards{gap:15px;} .book,.card{width:180px; padding:20px;} .book img{width:130px;height:130px;} }
 @media (max-width:600px){ nav{flex-direction:column;align-items:flex-start;} nav .links a{margin-left:0;} .books-container,.cards{flex-direction:column;align-items:center;} .book,.card{width:90%; max-width:250px;} .book img{width:120px;height:120px;} .hero h1{font-size:36px;} .hero p{font-size:16px;} }
-
 /* ========== Filter/Search Inputs ========== */
 #filterContainer { margin-bottom:20px; }
 #classFilter, #searchBook { padding:8px; margin:0 5px; border-radius:5px; border:1px solid #ccc; }
 </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav>
 <h2>📚 BookOrbit</h2>
@@ -159,6 +148,7 @@ nav .links a:hover { color:#00c6ff; }
 <a href="#features">Features</a>
 <a href="#books-section">Books</a>
 <a href="#stories-section">Stories</a>
+<a href="#sanskrit-section">Sanskrit</a>
 <a href="#contact-section">Contact</a>
 <a href="#" onclick="openModal('loginModal')">Login</a>
 <a href="#" onclick="openModal('signupModal')">Signup</a>
@@ -168,14 +158,14 @@ nav .links a:hover { color:#00c6ff; }
 <!-- Dark Mode -->
 <button id="darkModeBtn" onclick="toggleMode()">🌙 Dark Mode</button>
 
-<!-- Hero -->
+<!-- Hero Section -->
 <section class="hero" id="hero">
 <h1>Free Education For Everyone</h1>
 <p>ज्ञान ही शक्ति है। BookOrbit पर पाएं मुफ्त किताबें और अध्ययन सामग्री।</p>
 <button onclick="document.getElementById('books-section').scrollIntoView({behavior:'smooth'});">Explore Books</button>
 </section>
 
-<!-- Features -->
+<!-- Features Section -->
 <section class="features" id="features">
 <h2>Our Features</h2>
 <div class="cards">
@@ -206,9 +196,7 @@ nav .links a:hover { color:#00c6ff; }
 </select>
 <input type="text" id="searchBook" placeholder="Search Book Name..." onkeyup="filterBooks()">
 </div>
-
 <div class="books-container" id="booksContainer">
-<!-- Example Class 1 & 2, add more 1–12 with subjects -->
 <div class="book" data-class="1" data-name="Mathematics">
 <img src="https://via.placeholder.com/150" alt="Math">
 <h3>Mathematics</h3>
@@ -221,7 +209,6 @@ nav .links a:hover { color:#00c6ff; }
 <button onclick="alert('Download English Book')">Book</button>
 <button onclick="alert('Download English Solution')">Solution Guide</button>
 </div>
-<!-- Add remaining Class 3–12 subjects here similarly -->
 </div>
 </section>
 
@@ -238,11 +225,6 @@ nav .links a:hover { color:#00c6ff; }
 <img src="https://via.placeholder.com/150" alt="Harry Potter">
 <h3>Harry Potter (English)</h3>
 <button onclick="alert('Download Harry Potter')">Book</button>
-</div>
-<div class="book" data-class="stories" data-name="Akbar Birbal">
-<img src="https://via.placeholder.com/150" alt="Akbar Birbal">
-<h3>Akbar Birbal (Hindi)</h3>
-<button onclick="alert('Download Akbar Birbal')">Book</button>
 </div>
 </div>
 </section>
@@ -262,11 +244,13 @@ nav .links a:hover { color:#00c6ff; }
 <!-- Contact Section -->
 <section class="contact-section" id="contact-section">
 <h2>Contact Us</h2>
-<input type="text" id="contactName" placeholder="Your Name">
-<input type="email" id="contactEmail" placeholder="Your Email">
-<textarea id="contactMessage" rows="5" placeholder="Your Message"></textarea>
+<form action="contact.php" method="post">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 <br>
-<button onclick="sendContact()">Send Message</button>
+<button type="submit">Send Message</button>
+</form>
 </section>
 
 <!-- Footer -->
@@ -279,10 +263,12 @@ nav .links a:hover { color:#00c6ff; }
 <div class="modal-content">
 <span class="close" onclick="closeModal('loginModal')">&times;</span>
 <h3>Login</h3>
-<input type="text" id="loginUser" placeholder="Username"><br>
-<input type="password" id="loginPass" placeholder="Password"><br>
-<button onclick="loginUser()">Login</button>
-<p><a href="#" onclick="forgetPassword()">Forgot Password?</a></p>
+<form action="login.php" method="post">
+<input type="text" name="email" placeholder="Username or Email" required><br>
+<input type="password" name="password" placeholder="Password" required><br>
+<button type="submit">Login</button>
+</form>
+<p><a href="forgot.html">Forgot Password?</a></p>
 </div>
 </div>
 
@@ -291,69 +277,34 @@ nav .links a:hover { color:#00c6ff; }
 <div class="modal-content">
 <span class="close" onclick="closeModal('signupModal')">&times;</span>
 <h3>Signup</h3>
-<input type="text" id="signupUser" placeholder="Username"><br>
-<input type="password" id="signupPass" placeholder="Password"><br>
-<button onclick="signupUser()">Signup</button>
+<form action="signup.php" method="post">
+<input type="text" name="username" placeholder="Username" required><br>
+<input type="email" name="email" placeholder="Email" required><br>
+<input type="password" name="password" placeholder="Password" required><br>
+<input type="password" name="cpassword" placeholder="Confirm Password" required><br>
+<button type="submit">Signup</button>
+</form>
 </div>
 </div>
 
 <script>
 /* Dark Mode */
 function toggleMode(){ document.body.classList.toggle("dark"); }
-
 /* Modal Functions */
 function openModal(id){ document.getElementById(id).style.display='flex'; }
 function closeModal(id){ document.getElementById(id).style.display='none'; }
-
-/* Signup/Login using localStorage */
-function signupUser(){
-    let user=document.getElementById('signupUser').value;
-    let pass=document.getElementById('signupPass').value;
-    if(user && pass){ localStorage.setItem('user_'+user,pass); alert('Signup successful!'); closeModal('signupModal'); } 
-    else { alert('Enter username and password'); }
-}
-function loginUser(){
-    let user=document.getElementById('loginUser').value;
-    let pass=document.getElementById('loginPass').value;
-    let storedPass=localStorage.getItem('user_'+user);
-    if(storedPass===pass){ alert('Login successful!'); closeModal('loginModal'); } 
-    else { alert('Invalid username or password'); }
-}
-function forgetPassword(){
-    let user=prompt('Enter your username:');
-    let pass=localStorage.getItem('user_'+user);
-    if(pass) alert('Your password is: '+pass);
-    else alert('User not found');
-}
-
 /* Books Filter/Search */
 function filterBooks(){
-    let filter=document.getElementById('classFilter').value.toLowerCase();
-    let search=document.getElementById('searchBook').value.toLowerCase();
-    let books=document.getElementById('booksContainer').children;
-    for(let book of books){
-        let name=book.getAttribute('data-name').toLowerCase();
-        let cls=book.getAttribute('data-class');
-        let show=( (filter==='all' || cls===filter) && name.includes(search) );
-        book.style.display=show?'block':'none';
-    }
+let filter=document.getElementById('classFilter').value.toLowerCase();
+let search=document.getElementById('searchBook').value.toLowerCase();
+let books=document.getElementById('booksContainer').children;
+for(let book of books){
+let name=book.getAttribute('data-name').toLowerCase();
+let cls=book.getAttribute('data-class');
+let show=( (filter==='all' || cls===filter) && name.includes(search) );
+book.style.display=show?'block':'none';
 }
-
-/* Contact Form using EmailJS */
-function sendContact(){
-    let name=document.getElementById('contactName').value;
-    let email=document.getElementById('contactEmail').value;
-    let message=document.getElementById('contactMessage').value;
-    if(!name || !email || !message){ alert('Please fill all fields'); return; }
-    // Using EmailJS (https://www.emailjs.com/) - you need to set up your account & service/template ID
-    emailjs.send("service_id","template_id",{ from_name:name, from_email:email, message:message })
-    .then(()=>{ alert('Message sent!'); document.getElementById('contactName').value=''; document.getElementById('contactEmail').value=''; document.getElementById('contactMessage').value=''; })
-    .catch(()=>{ alert('Failed to send message.'); });
 }
-</script>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-(function(){ emailjs.init("YOUR_EMAILJS_USER_ID"); })();
 </script>
 
 </body>
