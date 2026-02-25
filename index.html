@@ -4,172 +4,259 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BookOrbit | Free Education Platform</title>
-
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #f4f6f9;
+    color: #000;
+    scroll-behavior: smooth;
 }
+a { text-decoration: none; }
 
 /* Navbar */
 nav {
     background: #0a192f;
-
-    padding: 15px 40px;
+    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
+nav h2 { color:white; margin:0; }
+nav a { color:white; margin-left:15px; margin-top:5px; font-weight:500; transition: color 0.3s; }
+nav a:hover { color:#00c6ff; }
 
-nav h2 {
-    color: white;
-    margin: 0;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
-/* Hero Section */
+/* Hero */
 .hero {
-    height: 90vh;
-    background: linear-gradient(to right, #007bff, #00c6ff);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+    min-height: 40vh;
+    background: linear-gradient(to right,#007bff,#00c6ff);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px;
 }
-
-.hero h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 20px;
-    max-width: 600px;
-}
-
+.hero h1 { font-size:50px; margin-bottom:20px; }
+.hero p { font-size:20px; max-width:700px; }
 .hero button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    background: white;
-    color: #007bff;
-    font-size: 16px;
-    cursor: pointer;
+    margin-top:20px; padding:12px 25px; border:none; border-radius:5px;
+    background:linear-gradient(45deg,#ffffff,#e0e0e0); color:#007bff; font-size:16px;
+    cursor:pointer; transition: all 0.3s;
 }
+.hero button:hover { transform:scale(1.05); background:linear-gradient(45deg,#e0e0e0,#ffffff); }
 
 /* Features */
-.features {
-    padding: 60px 20px;
-    text-align: center;
-}
-    /* Dark Mode */
-.dark {
-    background:#121212;
-    color:white;
-}
+.features { padding:60px 20px; text-align:center; background:#f9fafc; }
+.features h2 { margin-bottom:40px; }
+.cards { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+.card { background:white; padding:30px; width:250px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; cursor:pointer; transition:0.3s; }
+.card:hover { transform:translateY(-10px) scale(1.03); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
 
-.dark nav {
-    background:#000;
+/* Books Section */
+.books-section { padding:60px 20px; text-align:center; }
+.books-section h2 { margin-bottom:20px; }
+#classFilter, #searchBook { padding:8px 10px; margin:10px 5px; border-radius:5px; border:1px solid #ccc; }
+.books-container { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:20px; }
+.book {
+    background:white; padding:20px; width:200px; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    text-align:center; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s;
 }
+.book img { border-radius:5px; margin-bottom:15px; width:150px; height:150px; transition:transform 0.3s; }
+.book h3 { margin-bottom:10px; }
+.book button { padding:8px 12px; margin:5px; border:none; border-radius:5px; background:linear-gradient(45deg,#007bff,#00c6ff); color:white; cursor:pointer; font-size:14px; transition:all 0.3s; }
+.book button:hover { background:linear-gradient(45deg,#00c6ff,#007bff); }
+.book:hover { transform:scale(1.05); box-shadow:0 10px 25px rgba(0,0,0,0.2); }
+.book:hover img { transform:scale(1.1); }
 
-.dark .hero {
-    background: linear-gradient(to right, #000000, #1a1a1a);
-}
+/* Sanskrit Section */
+.sanskrit-section { padding:60px 20px; text-align:center; background:#f0f4f8; }
+.sanskrit-section h2 { margin-bottom:20px; }
 
-.dark .card {
-    background:#1e1e1e;
-    color:white;
-}
-
-.features h2 {
-    margin-bottom: 40px;
-}
-
-.cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.card {
-    background: white;
-    padding: 30px;
-    width: 250px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
- .card:hover {
-    transform: translateY(-10px);
-}
 /* Footer */
-footer {
-    background: #0a192f;
-    color: white;
-    text-align: center;
-    padding: 15px;
+footer { background:#0a192f; color:white; text-align:center; padding:15px; }
+
+/* Dark Mode */
+.dark { background:#121212; color:white; }
+.dark nav { background:#000; }
+.dark .hero { background:linear-gradient(to right,#000,#1a1a1a); }
+.dark .features, .dark .books-section, .dark .sanskrit-section { background:#181818; }
+.dark .card, .dark .book { background:#1e1e1e; }
+
+/* Dark Mode Button */
+#darkModeBtn {
+    position:fixed; top:20px; right:20px; padding:8px 15px; border:none; border-radius:5px;
+    cursor:pointer; background:#007bff; color:white; transition:all 0.3s;
+}
+#darkModeBtn:hover { background:#00c6ff; color:#000; }
+
+/* Responsive */
+@media (max-width:900px) { .books-container, .cards { gap:15px; } .book, .card { width:180px; padding:20px; } .book img { width:130px; height:130px; } }
+@media (max-width:600px) { nav { flex-direction:column; align-items:flex-start; } nav a { margin-left:0; } .books-container, .cards { flex-direction:column; align-items:center; } .book, .card { width:90%; max-width:250px; } .book img { width:120px; height:120px; } .hero h1 { font-size:36px; } .hero p { font-size:16px; }
 }
 </style>
 </head>
-
 <body>
+<!-- Navbar -->
 <nav>
-    <h2>📚 BookOrbit</h2>
-    <div>
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-        <a href="signup.html">Signup</a>
-        <a href="books.html">Books</a>
-        <a href="contact.html">Contact</a>
-    </div>
+<h2>📚 BookOrbit</h2>
+<div>
+<a href="#hero">Home</a>
+<a href="#features">Features</a>
+<a href="#books">NCERT Books</a>
+<a href="#stories">Stories</a>
+<a href="#sanskrit">Sanskrit Books</a>
+<a href="login.html">Login</a>
+<a href="signup.html">Signup</a>
+<a href="#contact">Contact</a>
+</div>
 </nav>
 
-<button onclick="toggleMode()" style="position:fixed;top:20px;right:20px;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;">
-🌙 Dark Mode
-</button>
-<section class="hero">
-    <h1>Free Education For Everyone</h1>
-    <p>ज्ञान ही शक्ति है। BookOrbit पर पाएं मुफ्त किताबें और अध्ययन सामग्री।</p>
-    <a href="books.html">
-    <button>Explore Now</button>
-    </a>
+<!-- Dark Mode -->
+<button id="darkModeBtn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+<h1>Free Education For Everyone</h1>
+<p>ज्ञान ही शक्ति है। BookOrbit पर पाएं मुफ्त किताबें और अध्ययन सामग्री।</p>
+<button onclick="document.getElementById('books').scrollIntoView({behavior:'smooth'});">Explore Books</button>
 </section>
 
-<section class="features">
-    <h2>Our Features</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>📖 Free Books</h3>
-            <p>सभी के लिए निःशुल्क अध्ययन सामग्री।</p>
-        </div>
-        <div class="card">
-            <h3>📱 Easy Access</h3>
-            <p>मोबाइल और कंप्यूटर पर आसानी से उपलब्ध।</p>
-        </div>
-        <div class="card">
-            <h3>🚀 Fast & Secure</h3>
-            <p>तेज़ और सुरक्षित प्लेटफॉर्म।</p>
-        </div>
-    </div>
+<!-- Features -->
+<section class="features" id="features">
+<h2>Our Features</h2>
+<div class="cards">
+<div class="card"><h3>📖 Free Books</h3><p>सभी के लिए निःशुल्क अध्ययन सामग्री।</p></div>
+<div class="card"><h3>📱 Easy Access</h3><p>मोबाइल और कंप्यूटर पर आसानी से उपलब्ध।</p></div>
+<div class="card"><h3>🚀 Fast & Secure</h3><p>तेज़ और सुरक्षित प्लेटफॉर्म।</p></div>
+</div>
 </section>
 
-<footer>
-    © 2026 BookOrbit | Developed by Shivbhajan Pandey
+<!-- NCERT Books Section -->
+<section class="books-section" id="books">
+<h2>NCERT Books (Class 1–12)</h2>
+<select id="classFilter" onchange="filterBooks()">
+<option value="all">All Classes</option>
+<option value="1">Class 1</option>
+<option value="2">Class 2</option>
+<option value="3">Class 3</option>
+<option value="4">Class 4</option>
+<option value="5">Class 5</option>
+<option value="6">Class 6</option>
+<option value="7">Class 7</option>
+<option value="8">Class 8</option>
+<option value="9">Class 9</option>
+<option value="10">Class 10</option>
+<option value="11">Class 11</option>
+<option value="12">Class 12</option>
+</select>
+<input type="text" id="searchBook" placeholder="Search Book Name..." onkeyup="filterBooks()">
+
+<div class="books-container" id="booksContainer">
+<!-- Class 1 -->
+<div class="book" data-class="1" data-name="Mathematics">
+<img src="https://via.placeholder.com/150" alt="Mathematics">
+<h3>Mathematics</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="1" data-name="English">
+<img src="https://via.placeholder.com/150" alt="English">
+<h3>English</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="1" data-name="Hindi">
+<img src="https://via.placeholder.com/150" alt="Hindi">
+<h3>Hindi</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="1" data-name="Sanskrit">
+<img src="https://via.placeholder.com/150" alt="Sanskrit">
+<h3>Sanskrit</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+
+<!-- Class 2 Sample -->
+<div class="book" data-class="2" data-name="Mathematics">
+<img src="https://via.placeholder.com/150" alt="Mathematics">
+<h3>Mathematics</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="2" data-name="English">
+<img src="https://via.placeholder.com/150" alt="English">
+<h3>English</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="2" data-name="Science">
+<img src="https://via.placeholder.com/150" alt="Science">
+<h3>Science</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+<div class="book" data-class="2" data-name="Hindi">
+<img src="https://via.placeholder.com/150" alt="Hindi">
+<h3>Hindi</h3>
+<button>Book</button>
+<button>Solution Guide</button>
+</div>
+
+<!-- Add similar blocks for Classes 3–12 -->
+</div>
+</section>
+
+<!-- Stories / Novels -->
+<section class="books-section" id="stories">
+<h2>Hindi & English Stories / Novels</h2>
+<div class="books-container">
+<div class="book"><img src="https://via.placeholder.com/150" alt="Panchtantra"><h3>Panchtantra (Hindi)</h3><button>Book</button></div>
+<div class="book"><img src="https://via.placeholder.com/150" alt="Harry Potter"><h3>Harry Potter (English)</h3><button>Book</button></div>
+<div class="book"><img src="https://via.placeholder.com/150" alt="Akbar Birbal"><h3>Akbar Birbal (Hindi)</h3><button>Book</button></div>
+</div>
+</section>
+
+<!-- Sanskrit Books -->
+<section class="sanskrit-section" id="sanskrit">
+<h2>Sanskrit Books</h2>
+<div class="books-container">
+<div class="book"><img src="https://via.placeholder.com/150" alt="Sanskrit Book 1"><h3>Sanskrit Book 1</h3><button>Book</button></div>
+<div class="book"><img src="https://via.placeholder.com/150" alt="Sanskrit Book 2"><h3>Sanskrit Book 2</h3><button>Book</button></div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+© 2026 BookOrbit | Developed by Shivbhajan Pandey
 </footer>
+
 <script>
+// Dark Mode
 function toggleMode(){
     document.body.classList.toggle("dark");
+}
+
+// Filter Books by Class & Search
+function filterBooks(){
+    let filter = document.getElementById('classFilter').value;
+    let search = document.getElementById('searchBook').value.toLowerCase();
+    let books = document.querySelectorAll('.books-container .book');
+    books.forEach(book => {
+        let bookClass = book.getAttribute('data-class');
+        let bookName = book.getAttribute('data-name') ? book.getAttribute('data-name').toLowerCase() : '';
+        if ((filter === 'all' || filter === bookClass) && (bookName.includes(search))) {
+            book.style.display = 'block';
+        } else {
+            book.style.display = 'none';
+        }
+    });
 }
 </script>
 </body>
